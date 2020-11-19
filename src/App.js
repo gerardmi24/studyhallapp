@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import CharacterCard from './components/CharacterCard';
 import './App.css';
+import characters from './data.js';
+// console.log(Characters)
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state={
+    characters: characters
+  }
+  render() {
+    return (
+      <div>
+        {this.state.characters.map((character, idx) => {
+        return <CharacterCard key={idx} character={character} />
+        })
+        }
+      </div>
+    )
+  }
 }
 
 export default App;
